@@ -17,9 +17,10 @@ function setup() {
 
 function draw() {
   background(220);
-  image(Battlemap2,0,0);
-  unit.update();
-  unit.show();
+  image(Battlemap2,0,0);//where it starts to make the background pic
+  unit.update();//updates units place
+
+  unit.show();//shows them
 
   
 }
@@ -35,12 +36,12 @@ function collidePointRec (pointX, pointY, x, y, xW, yW) {
       pointX <= x + xW &&    // left of the right edge AND
       pointY >= y &&         // below the top AND
       pointY <= y + yW) {    // above the bottom
-          return true;
+    return true;
   }
   return false;
-  }
+}
 function mousePressed(){
   if(collidePointRec(mouseX,mouseY,unit.pos.x,unit.pos.y,unit.width,unit.height)){
-
+    //
   }
 }
