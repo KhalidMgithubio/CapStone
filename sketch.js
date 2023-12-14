@@ -6,14 +6,18 @@
 // - describe what you did to take this project "above and beyond"
 let Battlemap2;
 let unit;
+let check = false;
+let unit2;
+
 function preload(){
   Battlemap2 = loadImage("Assests/Battlemap2.jpg");
   
 }
 function setup() {
   createCanvas(1350, 900);
-  unit = new  Units(45,45);
+  unit = new  UnitsCav(45,45); //unit Ca
 }
+
 
 function draw() {
   background(220);
@@ -21,8 +25,10 @@ function draw() {
   unit.update();//updates units place
 
   unit.show();//shows them
-
-  
+  if(check){
+    unit.pos.x = mouseX  - unit.width/2;// mouse corner with mouse
+    unit.pos.y = mouseY - unit.height/2 ;//
+  }
 }
 function keyPressed(){
 
@@ -41,7 +47,21 @@ function collidePointRec (pointX, pointY, x, y, xW, yW) {
   return false;
 }
 function mousePressed(){
-  if(collidePointRec(mouseX,mouseY,unit.pos.x,unit.pos.y,unit.width,unit.height)){
-    //
+
+  if(collidePointRec(mouseX,mouseY,unit.pos.x,unit.pos.y,unit.width,unit.height) && check === false){
+    check = true;
+   
+ 
   }
+  else if (collidePointRec(mouseX,mouseY,unit.pos.x,unit.pos.y,unit.width,unit.height) && check === true){
+    check = false;
+
+    if(unit.pos.x%45 !== 0){
+      unit.pos.x = round(unit.pos.x/45) * 45;
+    }
+    if(unit.pos.y%45 !== 0){
+      unit.pos.y = round(unit.pos.y/45) * 45;
+    }
+  }
+
 }
