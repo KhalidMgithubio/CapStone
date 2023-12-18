@@ -9,16 +9,19 @@ let unit;
 let check = false;
 let check2 = false;
 let unit2;
-
-
+let units = [];
+let example;
 function preload(){
   Battlemap2 = loadImage("Assests/Battlemap2.jpg");
+  example = loadImage("Assests/Example.png");
   
 }
 function setup() {
   createCanvas(1350, 900);
-  unit = new  UnitsCav(45,45); //unit Ca
-  unit2 = new UnitsCav(200,200);
+
+  for(let i = 0 ; i < 10; i++){
+    units[i] = new UnitsCav(random(width), random(height));
+  }
 
 }
 
@@ -28,49 +31,40 @@ function draw() {
 
   
   image(Battlemap2,0,0);//where it starts to make the background pic
-  unit.update();//updates units place
-  unit2.show();
 
-  unit.show();//shows them
-  if(check){
-    unit.pos.x = mouseX  - unit.width/2;// mouse corner with mouse
-    unit.pos.y = mouseY - unit.height/2 ;//
+
+
+  for(let i = 0 ; i < 10; i++){
+    units[i].show(Battlemap2);
+    units[i].update();
   }
 
 }
-function keyPressed(){
 
 
-}
 
-
-function collidePointRec (pointX, pointY, x, y, xW, yW) {
-  //2d
-  if (pointX >= x &&         // right of the left edge AND
-      pointX <= x + xW &&    // left of the right edge AND
-      pointY >= y &&         // below the top AND
-      pointY <= y + yW) {    // above the bottom
-    return true;
-  }
-  return false;
-}
 function mousePressed(){
 
-  if(collidePointRec(mouseX,mouseY,unit.pos.x,unit.pos.y,unit.width,unit.height) && check === false){
-    check = true;
+  for(let i = 0 ; i < 10; i++){
+    units[i].checkMouse();
+   
+  }
+
+  // if(collidePointRect(mouseX,mouseY,unit.pos.x,unit.pos.y,unit.width,unit.height) && check === false){
+  //   check = true;
    
  
-  }
-  else if (collidePointRec(mouseX,mouseY,unit.pos.x,unit.pos.y,unit.width,unit.height) && check === true){
-    check = false;
+  // }
+  // else if (collidePointRect(mouseX,mouseY,unit.pos.x,unit.pos.y,unit.width,unit.height) && check === true){
+  //   check = false;
 
-    if(unit.pos.x%45 !== 0){
-      unit.pos.x = round(unit.pos.x/45) * 45;
-    }
-    if(unit.pos.y%45 !== 0){
-      unit.pos.y = round(unit.pos.y/45) * 45;
-    }
-  }
+  //   if(unit.pos.x%45 !== 0){
+  //     unit.pos.x = round(unit.pos.x/45) * 45; //x part of 45
+  //   }
+  //   if(unit.pos.y%45 !== 0){
+  //     unit.pos.y = round(unit.pos.y/45) * 45; //y part of 45
+  //   }
+  // }
 
 }
 
