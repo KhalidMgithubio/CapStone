@@ -13,13 +13,13 @@ let units = [];
 let example;
 function preload(){
   Battlemap2 = loadImage("Assests/Battlemap2.jpg");
-  example = loadImage("Assests/Example.png");
+  example = loadImage("Assests/Cav.png");
   
 }
 function setup() {
   createCanvas(1350, 900);
 
-  for(let i = 0 ; i < 10; i++){
+  for(let i = 0 ; i < 23; i++){
     units[i] = new UnitsCav(random(width), random(height));
   }
 
@@ -34,8 +34,8 @@ function draw() {
 
 
 
-  for(let i = 0 ; i < 10; i++){
-    units[i].show(Battlemap2);
+  for(let i = 0 ; i < 23; i++){
+    units[i].show(example);
     units[i].update();
   }
 
@@ -45,7 +45,7 @@ function draw() {
 
 function mousePressed(){
 
-  for(let i = 0 ; i < 10; i++){
+  for(let i = 0 ; i < 23; i++){
     units[i].checkMouse();
    
   }

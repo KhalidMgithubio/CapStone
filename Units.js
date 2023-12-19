@@ -29,12 +29,12 @@ class  UnitsCav{//talks about  this look/place
       }
     }
   }
-  show(e){
-    image(e,this.pos.x,this.pox.y);
+  show(CavHelf){
+    image(CavHelf,this.pos.x,this.pos.y);
     // fill(0);
     // noStroke();
 
-    // rect(this.pos.x,this.pos.y,this.width,this.height);
+    // rect(this.pos.x, this.pos.y, this.width, this.height);
     // stroke(255);
     // strokeWeight(3);
     // line(this.pos.x,this.pos.y,this.width-2+this.pos.x,this.pos.y+this.height-2);
