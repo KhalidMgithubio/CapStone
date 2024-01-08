@@ -29,8 +29,8 @@ class  UnitsCav{//talks about  this look/place
       }
     }
   }
-  show(CavHelf){
-    image(CavHelf,this.pos.x,this.pos.y);
+  show(e){
+    image(e,this.pos.x,this.pos.y);
     // fill(0);
     // noStroke();
 
